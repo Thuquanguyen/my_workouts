@@ -13,8 +13,8 @@ struct MatchView: View {
     
     var body: some View {
         TabView(selection: $selection) {
-            TrainingDurationView().tag(Tab.duration)
-            TrainingLiveDataView().tag(Tab.metrics)
+//            TrainingDurationView(viewModel: viewModel).tag(Tab.duration)
+//            TrainingLiveDataView().tag(Tab.metrics)
         }
         .navigationTitle("Match")
         .navigationBarTitleDisplayMode(.inline)

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FA2AB7162A419CE6001D2F9E /* CountDownViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA2AB7152A419CE6001D2F9E /* CountDownViewModel.swift */; };
 		FA44F6182A35E4CE007A9E28 /* Myworkouts Watch App.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = FA44F6172A35E4CE007A9E28 /* Myworkouts Watch App.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		FA44F61D2A35E4CE007A9E28 /* MyworkoutsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA44F61C2A35E4CE007A9E28 /* MyworkoutsApp.swift */; };
 		FA44F61F2A35E4CE007A9E28 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA44F61E2A35E4CE007A9E28 /* ContentView.swift */; };
@@ -42,6 +43,8 @@
 		FA6511EE2A38E543005630CE /* ItemLiveData.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA6511ED2A38E543005630CE /* ItemLiveData.swift */; };
 		FA6511F02A38E613005630CE /* ConfirmView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA6511EF2A38E613005630CE /* ConfirmView.swift */; };
 		FA6511F22A38E6ED005630CE /* SelectedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA6511F12A38E6ED005630CE /* SelectedView.swift */; };
+		FAF23B792A41FCC70015134B /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAF23B782A41FCC70015134B /* CustomButton.swift */; };
+		FAF23B7B2A4207550015134B /* BindingExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAF23B7A2A4207550015134B /* BindingExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -83,6 +86,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		FA2AB7152A419CE6001D2F9E /* CountDownViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountDownViewModel.swift; sourceTree = "<group>"; };
 		FA44F6112A35E4CE007A9E28 /* Myworkouts.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Myworkouts.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA44F6172A35E4CE007A9E28 /* Myworkouts Watch App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Myworkouts Watch App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA44F61C2A35E4CE007A9E28 /* MyworkoutsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyworkoutsApp.swift; sourceTree = "<group>"; };
@@ -121,6 +125,8 @@
 		FA6511ED2A38E543005630CE /* ItemLiveData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemLiveData.swift; sourceTree = "<group>"; };
 		FA6511EF2A38E613005630CE /* ConfirmView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmView.swift; sourceTree = "<group>"; };
 		FA6511F12A38E6ED005630CE /* SelectedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedView.swift; sourceTree = "<group>"; };
+		FAF23B782A41FCC70015134B /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
+		FAF23B7A2A4207550015134B /* BindingExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BindingExtension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -220,6 +226,7 @@
 				FA44F64D2A35E4FD007A9E28 /* StringExtension.swift */,
 				FA44F64E2A35E4FD007A9E28 /* DictionaryExtension.swift */,
 				FA5EDE7D2A376631008B8066 /* View+Extension.swift */,
+				FAF23B7A2A4207550015134B /* BindingExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -242,6 +249,7 @@
 				FA6511ED2A38E543005630CE /* ItemLiveData.swift */,
 				FA6511EF2A38E613005630CE /* ConfirmView.swift */,
 				FA6511F12A38E6ED005630CE /* SelectedView.swift */,
+				FAF23B782A41FCC70015134B /* CustomButton.swift */,
 			);
 			path = Modifier;
 			sourceTree = "<group>";
@@ -369,6 +377,7 @@
 			isa = PBXGroup;
 			children = (
 				FA44F6892A361808007A9E28 /* TrainingViewModel.swift */,
+				FA2AB7152A419CE6001D2F9E /* CountDownViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -560,12 +569,14 @@
 			files = (
 				FA44F6722A35F5FA007A9E28 /* UserDataManager.swift in Sources */,
 				FA5EDE822A377DDA008B8066 /* TrainingLiveDataView.swift in Sources */,
+				FA2AB7162A419CE6001D2F9E /* CountDownViewModel.swift in Sources */,
 				FA44F61F2A35E4CE007A9E28 /* ContentView.swift in Sources */,
 				FA5EDE802A377D0D008B8066 /* TrainingDurationView.swift in Sources */,
 				FA44F68A2A361808007A9E28 /* TrainingViewModel.swift in Sources */,
 				FA6511EA2A38E483005630CE /* MatchDurationView.swift in Sources */,
 				FA5EDE7E2A376631008B8066 /* View+Extension.swift in Sources */,
 				FA44F6882A3617FA007A9E28 /* TrainingView.swift in Sources */,
+				FAF23B7B2A4207550015134B /* BindingExtension.swift in Sources */,
 				FA44F6662A35F512007A9E28 /* TextFieldData.swift in Sources */,
 				FA6511E62A38DEDA005630CE /* MatchView.swift in Sources */,
 				FA44F6812A35FCAA007A9E28 /* PlayerView.swift in Sources */,
@@ -574,6 +585,7 @@
 				FA44F6512A35E4FD007A9E28 /* StringExtension.swift in Sources */,
 				FA44F67C2A35FAD3007A9E28 /* ProfileViewModel.swift in Sources */,
 				FA44F67A2A35F7FB007A9E28 /* ProfileView.swift in Sources */,
+				FAF23B792A41FCC70015134B /* CustomButton.swift in Sources */,
 				FA6511EE2A38E543005630CE /* ItemLiveData.swift in Sources */,
 				FA6511F02A38E613005630CE /* ConfirmView.swift in Sources */,
 				FA6511F22A38E6ED005630CE /* SelectedView.swift in Sources */,

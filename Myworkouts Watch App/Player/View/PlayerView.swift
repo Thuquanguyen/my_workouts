@@ -11,28 +11,26 @@ struct PlayerView: View {
     @ObservedObject var viewModel = PlayerViewModel()
     
     var body: some View {
-        NavigationView{
-            VStack {
-                NavigationLink(destination: TrainingView()) {
-                    Text("Training")
-                        .font(.headline)
-                }.background(viewModel.backgroundColor)
-                    .cornerRadius(20)
-                Spacer()
-                        .frame(height: 10)
-                NavigationLink(destination: MatchView()) {
-                    Text("Match")
-                }.background(viewModel.backgroundColor)
-                    .cornerRadius(20)
-                Spacer()
-                        .frame(height: 10)
-                NavigationLink(destination: PlayerView()) {
-                    Text("Test")
-                }.background(viewModel.backgroundColor)
-                    .cornerRadius(20)
-            }.navigationTitle("Session")
-                .navigationBarTitleDisplayMode(.inline)
-        }
+        VStack {
+            NavigationLink(destination: TrainingView()) {
+                Text("Training")
+                    .font(.headline)
+            }.background(viewModel.backgroundColor)
+                .cornerRadius(20)
+            Spacer()
+                    .frame(height: 10)
+            NavigationLink(destination: MatchView()) {
+                Text("Match")
+            }.background(viewModel.backgroundColor)
+                .cornerRadius(20)
+            Spacer()
+                    .frame(height: 10)
+            NavigationLink(destination: PlayerView()) {
+                Text("Test")
+            }.background(viewModel.backgroundColor)
+                .cornerRadius(20)
+        }.navigationTitle("Session")
+            .navigationBarTitleDisplayMode(.inline)
     }
 }
 

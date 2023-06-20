@@ -9,6 +9,7 @@ import SwiftUI
 
 struct TrainingLiveDataView: View {
     @ObservedObject var viewModel = TrainingViewModel()
+    
     var body: some View {
         List{
             ForEach(viewModel.metrics, id: \.id){ item in

@@ -15,6 +15,18 @@ enum Tab {
 
 class TrainingViewModel: ObservableObject, Identifiable{
     var backgroundColor: Color = Color(hex: 0x222224)
+    @ObservedObject var countDownVM = CountDownViewModel()
+    @Published var isHiddenBack = false
+    @Published var isStart = true
+    @Published var showConf = false
+    @Published var isSave = false
+    @Published var selectedIndex = 0
+    
+    func saveData(){
+        isStart = true
+        isHiddenBack = false
+        isSave = false
+    }
     
     var metrics: [MetricModel] = [
         MetricModel(id: 0,title: "Duration", value: "80:59", unit: ""),

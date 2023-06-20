@@ -16,7 +16,7 @@ struct ProfileView: View {
                 NavigationLink(destination: PlayerView()) {
                     Text("Player").font(.headline)
                 }.background(viewModel.backgroundColor)
-                    .cornerRadius(20)
+                .cornerRadius(20)
                 Spacer()
                         .frame(height: 10)
                 NavigationLink(destination: PlayerView()) {

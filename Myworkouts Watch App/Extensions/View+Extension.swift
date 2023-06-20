@@ -94,4 +94,14 @@ extension View {
             return clipShape(roundedRect)
                 .overlay(roundedRect.stroke(content, lineWidth: width))
         }
+    
+    @ViewBuilder func isHidden(_ hidden: Bool, remove: Bool = false) -> some View {
+            if hidden {
+                if !remove {
+                    self.hidden()
+                }
+            } else {
+                self
+            }
+        }
 }
