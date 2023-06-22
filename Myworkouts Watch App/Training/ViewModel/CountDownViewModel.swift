@@ -9,54 +9,74 @@ import Foundation
 import SwiftUI
 
 final class CountDownViewModel: ObservableObject,Identifiable{
-    @Published var isActive = false
-    @Published var showingAlert = false
     @Published var time: String = "00:00"
-    @Published var minutes: Float = 00.0 {
+    @Published var timeleft: String = "00:00"
+    
+    var timer = Timer()
+    var timerLeft = Timer()
+    
+    @Published var timerActive = false
+    @Published var duration = 0.0
+    {
         didSet{
-            self.time = "\(Int(minutes)):00"
+            self.time = getSecondsToDuration(Int(self.duration))
         }
     }
-    @Published var initalTime = 0
-    @Published var endDate = Date()
     
-    func start(minutes: Float){
-        print("minutes  = \(minutes)")
-        self.initalTime = Int(minutes)
-        self.endDate = Date()
-        self.isActive = true
-        self.endDate = Calendar.current.date(bySetting: .minute, value: Int(minutes), of: endDate)!
-        print("minutes  = \(isActive)")
-    }
-    
-    func reset(){
-        print("RESSETTTTT")
-        self.minutes = Float(initalTime)
-        self.isActive = false
-        self.time = "\(Int(minutes)):00"
-    }
-    
-    func updateCountdown(){
-        print("activeeeee = \(self.isActive)")
-        guard isActive else {return}
-        
-        let now = Date()
-        let diff = endDate.timeIntervalSince1970 - now.timeIntervalSince1970
-        
-        if diff <= 0 {
-            self.isActive = false
-            self.time = "00:00"
-            self.showingAlert = false
-            return
+    @Published var durationLeft = 0.0
+    {
+        didSet{
+            self.timeleft = getSecondsToDuration(Int(self.durationLeft))
         }
+    }
         
-        let date = Date(timeIntervalSince1970: diff)
-        let calendar = Calendar.current
-        let minutes = calendar.component(.minute, from: date)
-        let seconds = calendar.component(.second, from: date)
-        
-        self.minutes = Float(minutes)
-        self.time = String(format: "%d:%0.2d", minutes,seconds)
-        print("TIME TIME TIME = \(self.time)")
+    init() { }
+    
+    func setTimer(minutes: Int, seconds: Int) {
+        let  mins = minutes * 60, secs = seconds
+        let seconds = secs + mins
+        self.duration = Double(seconds)
+    }
+    
+    func startTimerButt(mins: Int, secs: Int) {
+        if mins != 0 || secs != 0 {
+            setTimer(minutes: mins, seconds: secs)
+            enableTimerMethod()
+            enableTimerLeftMethod()
+        }
+    }
+    
+    func enableTimerLeftMethod() {
+        timerActive = true
+        timerLeft = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { _ in
+            self.durationLeft += 1
+            if self.durationLeft >= self.duration { self.stopTimerButton() }
+            
+        }
+    }
+    
+    func enableTimerMethod() {
+        timerActive = true
+        timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { _ in
+            self.duration -= 1
+            if self.duration <= 0 { self.stopTimerButton() }
+            
+        }
+    }
+    
+    func timerActionButton() {
+        if timerActive {
+            timerActive = false
+            timer.invalidate()
+            timerLeft.invalidate()
+        } else { enableTimerMethod() }
+    }
+    
+    func stopTimerButton() {
+        timerActive = false
+        timer.invalidate()
+        timerLeft.invalidate()
+        duration = 0
+        durationLeft = 0
     }
 }

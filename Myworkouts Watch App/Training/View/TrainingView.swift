@@ -8,43 +8,36 @@
 import SwiftUI
 
 struct TrainingView: View {
+    @ObservedObject var countDownVM = CountDownViewModel()
     @ObservedObject var viewModel = TrainingViewModel()
     @State private var selection: Tab = .duration
+    @State private var isFirstScreen: Bool = true
+    @State var selectedIndex: Int = 0{
+        didSet{
+            print("self.dkadka = \(self.selectedIndex)")
+        }
+    }
+    
     
     var body: some View {
-        ZStack{
-                SelectView.isHidden(!viewModel.isStart)
-                TabView(selection: $selection) {
-                    TrainingDurationView(viewModel: viewModel).tag(Tab.duration)
-                    TrainingLiveDataView().tag(Tab.metrics)
-                }.isHidden(viewModel.isStart)
+        VStack{
+            TabView(selection: $selection) {
+                TrainingDurationView(viewModel: viewModel,countDownVM: countDownVM).tag(Tab.duration).onAppear{
+                    if(isFirstScreen){
+                        viewModel.selectedIndex = selectedIndex
+                        countDownVM.startTimerButt(mins: selectedIndex, secs: 0)
+                        isFirstScreen = false
+                    }
+                }
+                TrainingLiveDataView().tag(Tab.metrics)
+            }
         }
         .navigationTitle("Training")
         .navigationBarTitleDisplayMode(.inline)
-        .navigationBarBackButtonHidden(viewModel.isHiddenBack)
+        .navigationBarBackButtonHidden(true)
         .tabViewStyle(PageTabViewStyle(indexDisplayMode: .automatic))
     }
 }
-extension TrainingView{
-    var SelectView: some View{
-        VStack {
-            SelectedView(title: "Planned Duration") { value in
-                viewModel.selectedIndex = value
-            }
-            Button(action: {
-                viewModel.isStart = !viewModel.isStart
-                viewModel.countDownVM.start(minutes: Float(viewModel.selectedIndex))
-                viewModel.isHiddenBack = true
-            }, label: {
-                Text("Start").font(.headline).padding(.zero)
-            })
-            .padding(.zero)
-            .background(Color(hex: 0x09E099))
-            .cornerRadius(20)
-        }
-    }
-}
-
 
 struct TrainingView_Previews: PreviewProvider {
     static var previews: some View {

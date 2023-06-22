@@ -7,10 +7,12 @@
 
 import SwiftUI
 
-struct TrainingDurationView<Model>: View where Model: TrainingViewModel {
-    @ObservedObject var viewModel: Model
-    private let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
+struct TrainingDurationView<Model,VM>: View where Model: CountDownViewModel,VM: TrainingViewModel {
+    @ObservedObject var viewModel: VM
+    @ObservedObject var countDownVM: Model
     
+    private let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
+
     
     var body: some View {
         ZStack {
@@ -19,6 +21,7 @@ struct TrainingDurationView<Model>: View where Model: TrainingViewModel {
                 } yesButtonAction: {
                     viewModel.showConf = false
                     viewModel.isSave = true
+                    countDownVM.timerActionButton()
                 }.isHidden(!viewModel.showConf)
                 StartView.isHidden(viewModel.showConf)
         }
@@ -27,7 +30,7 @@ struct TrainingDurationView<Model>: View where Model: TrainingViewModel {
 
 struct TrainingDurationView_Previews: PreviewProvider {
     static var previews: some View {
-        TrainingDurationView(viewModel: TrainingViewModel())
+        TrainingDurationView(viewModel: TrainingViewModel(), countDownVM: CountDownViewModel())
     }
 }
 
@@ -40,18 +43,18 @@ extension TrainingDurationView{
                 .foregroundColor(Color(hex: 0x818389))
                 .padding(.horizontal)
             
-            Text("\(viewModel.countDownVM.time)").font(.system(size: 60)).fontWeight(.medium)
+            Text("\(countDownVM.time)").font(.system(size: 60)).fontWeight(.medium)
             Spacer()
                     .frame(height: 10)
             HStack {
                 VStack{
                     Text("Total time").foregroundColor(Color(hex: 0x494B4E)).font(.system(size: 12))
-                    Text("(90:00)").foregroundColor(Color(hex: 0xA2A2A2)).font(.system(size: 22))
+                    Text(String(format: "%0.2d:%0.2d", viewModel.selectedIndex,0)).foregroundColor(Color(hex: 0xA2A2A2)).font(.system(size: 22))
                 }.padding()
                 Spacer()
                 VStack{
                     Text("Time left").foregroundColor(Color(hex: 0x494B4E)).font(.system(size: 12))
-                    Text("(90:01)").foregroundColor(Color(hex: 0xA2A2A2)).font(.system(size: 22))
+                    Text("(\(countDownVM.timeleft))").foregroundColor(Color(hex: 0xA2A2A2)).font(.system(size: 22))
                 }.padding()
             }
             if(viewModel.isSave){
@@ -67,30 +70,29 @@ extension TrainingDurationView{
                     Spacer()
                     Button(action: {
                         viewModel.showConf = true
-                        viewModel.countDownVM.reset()
+//                        countDownVM.reset()
                     }, label: {
                         Text("End").font(.subheadline).padding().frame(maxWidth: .infinity).foregroundColor(.red)
                     }).buttonStyle(PlainButtonStyle()).background(Color(hex: 0x494A4C)).borderRadius(Color(hex: 0x4A2E2C), width: 3, cornerRadius: 20, corners: [.topLeft, .bottomLeft])
                     Spacer()
                         ZStack{
                             Button(action: {
-                                viewModel.isStart = !viewModel.isStart
-                                viewModel.countDownVM.reset()
+                                viewModel.isPause = true
+                                countDownVM.timerActionButton()
                             }, label: {
                                 Text("Paus").font(.subheadline).padding().frame(maxWidth: .infinity).foregroundColor(Color(hex: 0x08D18E))
-                            }).buttonStyle(PlainButtonStyle()).background(.black).borderRadius(Color(hex: 0x09E099), width: 3, cornerRadius: 20, corners: [.topRight, .bottomRight])
-//                            Button(action: {
-//                                viewModel.isStart = !viewModel.isStart
-//                                viewModel.countDownVM.reset()
-//                            }, label: {
-//                                Text("Continue").font(.subheadline).padding().frame(maxWidth: .infinity).foregroundColor(.white)
-//                            }).buttonStyle(PlainButtonStyle()).background(Color(hex: 0x4654EA)).cornerRadius(20, corners: [.topRight,.bottomRight])
+                            }).buttonStyle(PlainButtonStyle()).background(.black).borderRadius(Color(hex: 0x09E099), width: 3, cornerRadius: 20, corners: [.topRight, .bottomRight]).isHidden(viewModel.isPause)
+                            
+                            Button(action: {
+                                viewModel.isPause = false
+                                countDownVM.timerActionButton()
+                            }, label: {
+                                Text("Continue").font(.subheadline).padding().frame(maxWidth: .infinity).foregroundColor(.white)
+                            }).buttonStyle(PlainButtonStyle()).background(Color(hex: 0x4654EA)).cornerRadius(20, corners: [.topRight,.bottomRight]).isHidden(!viewModel.isPause)
                         }
                     Spacer()
                 }.mask(RoundedRectangle(cornerRadius: 25))
             }
-        }.onReceive(timer){ _ in
-            viewModel.countDownVM.updateCountdown()
         }
     }
 }

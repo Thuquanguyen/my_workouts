@@ -12,7 +12,7 @@ struct PlayerView: View {
     
     var body: some View {
         VStack {
-            NavigationLink(destination: TrainingView()) {
+            NavigationLink(destination: StartTrainingView()) {
                 Text("Training")
                     .font(.headline)
             }.background(viewModel.backgroundColor)

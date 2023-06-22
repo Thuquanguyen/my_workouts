@@ -83,4 +83,8 @@ extension String {
     let phoneTest = NSPredicate(format: "SELF MATCHES %@", "^\\d{3}-\\d{3}-\\d{4}$")
     return phoneTest.evaluate(with: self)
   }
+    
+    func toDate(withFormat format: String) -> Date? {
+            return Date.CustomDateFormatter.dateFormatter(withFormat: format).date(from:  self)
+        }
 }

@@ -43,6 +43,9 @@
 		FA6511EE2A38E543005630CE /* ItemLiveData.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA6511ED2A38E543005630CE /* ItemLiveData.swift */; };
 		FA6511F02A38E613005630CE /* ConfirmView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA6511EF2A38E613005630CE /* ConfirmView.swift */; };
 		FA6511F22A38E6ED005630CE /* SelectedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA6511F12A38E6ED005630CE /* SelectedView.swift */; };
+		FAA407522A448E680090F54D /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA407512A448E680090F54D /* Date+Extension.swift */; };
+		FAA407572A449A480090F54D /* HelpersMethods.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA407562A449A480090F54D /* HelpersMethods.swift */; };
+		FAA407592A449E0B0090F54D /* StartTrainingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA407582A449E0B0090F54D /* StartTrainingView.swift */; };
 		FAF23B792A41FCC70015134B /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAF23B782A41FCC70015134B /* CustomButton.swift */; };
 		FAF23B7B2A4207550015134B /* BindingExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAF23B7A2A4207550015134B /* BindingExtension.swift */; };
 /* End PBXBuildFile section */
@@ -125,6 +128,9 @@
 		FA6511ED2A38E543005630CE /* ItemLiveData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemLiveData.swift; sourceTree = "<group>"; };
 		FA6511EF2A38E613005630CE /* ConfirmView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmView.swift; sourceTree = "<group>"; };
 		FA6511F12A38E6ED005630CE /* SelectedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedView.swift; sourceTree = "<group>"; };
+		FAA407512A448E680090F54D /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
+		FAA407562A449A480090F54D /* HelpersMethods.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpersMethods.swift; sourceTree = "<group>"; };
+		FAA407582A449E0B0090F54D /* StartTrainingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartTrainingView.swift; sourceTree = "<group>"; };
 		FAF23B782A41FCC70015134B /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
 		FAF23B7A2A4207550015134B /* BindingExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BindingExtension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -178,6 +184,7 @@
 		FA44F61B2A35E4CE007A9E28 /* Myworkouts Watch App */ = {
 			isa = PBXGroup;
 			children = (
+				FAA407552A449A310090F54D /* Helpers */,
 				FA6511E22A38DEB7005630CE /* Match */,
 				FA44F6842A3617DB007A9E28 /* Training */,
 				FA44F67D2A35FC8E007A9E28 /* Player */,
@@ -227,6 +234,7 @@
 				FA44F64E2A35E4FD007A9E28 /* DictionaryExtension.swift */,
 				FA5EDE7D2A376631008B8066 /* View+Extension.swift */,
 				FAF23B7A2A4207550015134B /* BindingExtension.swift */,
+				FAA407512A448E680090F54D /* Date+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -369,6 +377,7 @@
 				FA44F6872A3617FA007A9E28 /* TrainingView.swift */,
 				FA5EDE7F2A377D0D008B8066 /* TrainingDurationView.swift */,
 				FA5EDE812A377DDA008B8066 /* TrainingLiveDataView.swift */,
+				FAA407582A449E0B0090F54D /* StartTrainingView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -407,6 +416,14 @@
 				FA6511EB2A38E498005630CE /* MatchLiveDataView.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		FAA407552A449A310090F54D /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				FAA407562A449A480090F54D /* HelpersMethods.swift */,
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -570,6 +587,7 @@
 				FA44F6722A35F5FA007A9E28 /* UserDataManager.swift in Sources */,
 				FA5EDE822A377DDA008B8066 /* TrainingLiveDataView.swift in Sources */,
 				FA2AB7162A419CE6001D2F9E /* CountDownViewModel.swift in Sources */,
+				FAA407592A449E0B0090F54D /* StartTrainingView.swift in Sources */,
 				FA44F61F2A35E4CE007A9E28 /* ContentView.swift in Sources */,
 				FA5EDE802A377D0D008B8066 /* TrainingDurationView.swift in Sources */,
 				FA44F68A2A361808007A9E28 /* TrainingViewModel.swift in Sources */,
@@ -583,6 +601,7 @@
 				FA44F6672A35F512007A9E28 /* TextFieldView.swift in Sources */,
 				FA44F64F2A35E4FD007A9E28 /* ImageExtension.swift in Sources */,
 				FA44F6512A35E4FD007A9E28 /* StringExtension.swift in Sources */,
+				FAA407572A449A480090F54D /* HelpersMethods.swift in Sources */,
 				FA44F67C2A35FAD3007A9E28 /* ProfileViewModel.swift in Sources */,
 				FA44F67A2A35F7FB007A9E28 /* ProfileView.swift in Sources */,
 				FAF23B792A41FCC70015134B /* CustomButton.swift in Sources */,
@@ -590,6 +609,7 @@
 				FA6511F02A38E613005630CE /* ConfirmView.swift in Sources */,
 				FA6511F22A38E6ED005630CE /* SelectedView.swift in Sources */,
 				FA6511EC2A38E498005630CE /* MatchLiveDataView.swift in Sources */,
+				FAA407522A448E680090F54D /* Date+Extension.swift in Sources */,
 				FA44F6832A3616FB007A9E28 /* PlayerViewModel.swift in Sources */,
 				FA6511E82A38DEE5005630CE /* MatchViewModel.swift in Sources */,
 				FA44F6522A35E4FD007A9E28 /* DictionaryExtension.swift in Sources */,
