@@ -9,29 +9,31 @@ import SwiftUI
 
 struct ProfileView: View {
     @ObservedObject var viewModel = ProfileViewModel()
+    @EnvironmentObject var metricsManager: WorkoutManager
     
     var body: some View {
-        NavigationView{
-            VStack {
-                NavigationLink(destination: PlayerView()) {
-                    Text("Player").font(.headline)
-                }.background(viewModel.backgroundColor)
+        VStack {
+            NavigationLink(destination: PlayerView()) {
+                Text("Player").font(.headline)
+            }.background(viewModel.backgroundColor)
+            .cornerRadius(20)
+            Spacer()
+                    .frame(height: 10)
+            NavigationLink(destination: PlayerView()) {
+                Text("Coach").font(.headline)
+            }.background(viewModel.backgroundColor)
                 .cornerRadius(20)
-                Spacer()
-                        .frame(height: 10)
-                NavigationLink(destination: PlayerView()) {
-                    Text("Coach").font(.headline)
-                }.background(viewModel.backgroundColor)
-                    .cornerRadius(20)
-                Spacer()
-                        .frame(height: 10)
-                NavigationLink(destination: PlayerView()) {
-                    Text("Referee").font(.headline)
-                }.background(viewModel.backgroundColor)
-                    .cornerRadius(20)
-            }.navigationTitle("Profile")
-                .navigationBarTitleDisplayMode(.inline)
-        }
+            Spacer()
+                    .frame(height: 10)
+            NavigationLink(destination: PlayerView()) {
+                Text("Referee").font(.headline)
+            }.background(viewModel.backgroundColor)
+                .cornerRadius(20)
+        }.navigationTitle("Profile")
+            .navigationBarTitleDisplayMode(.inline)
+            .onAppear {
+                metricsManager.requestAuthorization()
+            }
     }
 }
 

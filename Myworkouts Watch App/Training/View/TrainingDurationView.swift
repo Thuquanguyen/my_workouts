@@ -7,12 +7,12 @@
 
 import SwiftUI
 
-struct TrainingDurationView<Model,VM>: View where Model: CountDownViewModel,VM: TrainingViewModel {
-    @ObservedObject var viewModel: VM
-    @ObservedObject var countDownVM: Model
-    
-    private let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
-
+struct TrainingDurationView<Model,VM,WK>: View where Model: CountDownViewModel,VM: TrainingViewModel ,WK: WorkoutManager{
+    @StateObject var viewModel: VM
+    @EnvironmentObject var countDownVM: Model
+    @EnvironmentObject var workoutManager: WK
+    @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
+    @Environment(\.dismiss) var dismiss
     
     var body: some View {
         ZStack {
@@ -22,15 +22,18 @@ struct TrainingDurationView<Model,VM>: View where Model: CountDownViewModel,VM: 
                     viewModel.showConf = false
                     viewModel.isSave = true
                     countDownVM.timerActionButton()
+                    workoutManager.togglePause()
                 }.isHidden(!viewModel.showConf)
                 StartView.isHidden(viewModel.showConf)
+        }.onReceive(NotificationCenter.default.publisher(for: Notification.Name("endTime"))) { output in
+            workoutManager.togglePause()
         }
     }
 }
 
 struct TrainingDurationView_Previews: PreviewProvider {
     static var previews: some View {
-        TrainingDurationView(viewModel: TrainingViewModel(), countDownVM: CountDownViewModel())
+        TrainingDurationView(viewModel: TrainingViewModel()).environmentObject(CountDownViewModel()).environmentObject(WorkoutManager())
     }
 }
 
@@ -59,7 +62,8 @@ extension TrainingDurationView{
             }
             if(viewModel.isSave){
                 Button(action: {
-                    viewModel.saveData()
+                    workoutManager.endWorkout()
+                    self.presentationMode.wrappedValue.dismiss()
                 }, label: {
                     Text("Save").font(.headline).padding(.zero)
                 })
@@ -70,7 +74,6 @@ extension TrainingDurationView{
                     Spacer()
                     Button(action: {
                         viewModel.showConf = true
-//                        countDownVM.reset()
                     }, label: {
                         Text("End").font(.subheadline).padding().frame(maxWidth: .infinity).foregroundColor(.red)
                     }).buttonStyle(PlainButtonStyle()).background(Color(hex: 0x494A4C)).borderRadius(Color(hex: 0x4A2E2C), width: 3, cornerRadius: 20, corners: [.topLeft, .bottomLeft])
@@ -79,6 +82,7 @@ extension TrainingDurationView{
                             Button(action: {
                                 viewModel.isPause = true
                                 countDownVM.timerActionButton()
+                                workoutManager.togglePause()
                             }, label: {
                                 Text("Paus").font(.subheadline).padding().frame(maxWidth: .infinity).foregroundColor(Color(hex: 0x08D18E))
                             }).buttonStyle(PlainButtonStyle()).background(.black).borderRadius(Color(hex: 0x09E099), width: 3, cornerRadius: 20, corners: [.topRight, .bottomRight]).isHidden(viewModel.isPause)
@@ -86,6 +90,7 @@ extension TrainingDurationView{
                             Button(action: {
                                 viewModel.isPause = false
                                 countDownVM.timerActionButton()
+                                workoutManager.togglePause()
                             }, label: {
                                 Text("Continue").font(.subheadline).padding().frame(maxWidth: .infinity).foregroundColor(.white)
                             }).buttonStyle(PlainButtonStyle()).background(Color(hex: 0x4654EA)).cornerRadius(20, corners: [.topRight,.bottomRight]).isHidden(!viewModel.isPause)

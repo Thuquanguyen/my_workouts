@@ -51,7 +51,6 @@ final class CountDownViewModel: ObservableObject,Identifiable{
         timerLeft = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { _ in
             self.durationLeft += 1
             if self.durationLeft >= self.duration { self.stopTimerButton() }
-            
         }
     }
     
@@ -69,7 +68,9 @@ final class CountDownViewModel: ObservableObject,Identifiable{
             timerActive = false
             timer.invalidate()
             timerLeft.invalidate()
-        } else { enableTimerMethod() }
+        } else { enableTimerMethod()
+            enableTimerLeftMethod()
+        }
     }
     
     func stopTimerButton() {
@@ -78,5 +79,6 @@ final class CountDownViewModel: ObservableObject,Identifiable{
         timerLeft.invalidate()
         duration = 0
         durationLeft = 0
+        NotificationCenter.default.post(name: Notification.Name("endTime"), object: nil)
     }
 }

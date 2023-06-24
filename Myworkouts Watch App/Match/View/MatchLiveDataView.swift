@@ -10,11 +10,7 @@ import SwiftUI
 struct MatchLiveDataView: View {
     @ObservedObject var viewModel = MatchViewModel()
     var body: some View {
-        List{
-            ForEach(viewModel.metrics, id: \.id){ item in
-                ItemLiveData(title: item.title,subTitle: "\(item.value)",buttonAction:{})
-            }
-        }
+       Text("KAKKA")
     }
 }
 

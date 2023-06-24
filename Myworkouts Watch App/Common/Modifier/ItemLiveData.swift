@@ -10,19 +10,17 @@ import SwiftUI
 struct ItemLiveData: View{
     var title: String? = nil
     var subTitle: String? = nil
-    var buttonAction: () -> Void = {}
-    
     var body: some View {
-        Button(action: { buttonAction() }) {
+        Button(action: {}) {
             VStack(alignment: .leading){
-                Text(title ?? "")
+                Text(title ?? "Duration")
                     .font(.system(size: 12)).foregroundColor(Color(hex: 0xAAB0BB))
-                Text(subTitle ?? "").font(.system(size: 15)).fontWeight(.medium)
+                Text(subTitle ?? "80:59").font(.system(size: 15)).fontWeight(.medium)
             }.frame(
                 maxWidth: .infinity,
                 alignment: .leading
             )
-        }.buttonStyle(PlainButtonStyle()).cornerRadius(8).padding(.zero)
+        }.buttonStyle(PlainButtonStyle()).buttonStyle(.borderedProminent).buttonBorderShape(.roundedRectangle).cornerRadius(8).padding().background(Color(hex: 0x252628))
     }
 }
 

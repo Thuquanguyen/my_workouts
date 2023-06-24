@@ -43,9 +43,14 @@
 		FA6511EE2A38E543005630CE /* ItemLiveData.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA6511ED2A38E543005630CE /* ItemLiveData.swift */; };
 		FA6511F02A38E613005630CE /* ConfirmView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA6511EF2A38E613005630CE /* ConfirmView.swift */; };
 		FA6511F22A38E6ED005630CE /* SelectedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA6511F12A38E6ED005630CE /* SelectedView.swift */; };
+		FA7E3F642A47084700F38593 /* ElapsedTimeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA7E3F632A47084700F38593 /* ElapsedTimeView.swift */; };
 		FAA407522A448E680090F54D /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA407512A448E680090F54D /* Date+Extension.swift */; };
 		FAA407572A449A480090F54D /* HelpersMethods.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA407562A449A480090F54D /* HelpersMethods.swift */; };
 		FAA407592A449E0B0090F54D /* StartTrainingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA407582A449E0B0090F54D /* StartTrainingView.swift */; };
+		FAAB141B2A460D19000AE2CD /* WorkoutManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAAB141A2A460D19000AE2CD /* WorkoutManager.swift */; };
+		FAAB141D2A460FF7000AE2CD /* ComplicationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAAB141C2A460FF7000AE2CD /* ComplicationController.swift */; };
+		FAAB14222A46164C000AE2CD /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FAAB14212A46164C000AE2CD /* HealthKit.framework */; };
+		FAAB14262A461A05000AE2CD /* ActivityRingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAAB14252A461A05000AE2CD /* ActivityRingsView.swift */; };
 		FAF23B792A41FCC70015134B /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAF23B782A41FCC70015134B /* CustomButton.swift */; };
 		FAF23B7B2A4207550015134B /* BindingExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAF23B7A2A4207550015134B /* BindingExtension.swift */; };
 /* End PBXBuildFile section */
@@ -128,9 +133,16 @@
 		FA6511ED2A38E543005630CE /* ItemLiveData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemLiveData.swift; sourceTree = "<group>"; };
 		FA6511EF2A38E613005630CE /* ConfirmView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmView.swift; sourceTree = "<group>"; };
 		FA6511F12A38E6ED005630CE /* SelectedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedView.swift; sourceTree = "<group>"; };
+		FA7E3F632A47084700F38593 /* ElapsedTimeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElapsedTimeView.swift; sourceTree = "<group>"; };
 		FAA407512A448E680090F54D /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
 		FAA407562A449A480090F54D /* HelpersMethods.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpersMethods.swift; sourceTree = "<group>"; };
 		FAA407582A449E0B0090F54D /* StartTrainingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartTrainingView.swift; sourceTree = "<group>"; };
+		FAAB141A2A460D19000AE2CD /* WorkoutManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutManager.swift; sourceTree = "<group>"; };
+		FAAB141C2A460FF7000AE2CD /* ComplicationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComplicationController.swift; sourceTree = "<group>"; };
+		FAAB14212A46164C000AE2CD /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = Platforms/WatchOS.platform/Developer/SDKs/WatchOS9.4.sdk/System/Library/Frameworks/HealthKit.framework; sourceTree = DEVELOPER_DIR; };
+		FAAB14232A46168F000AE2CD /* Myworkouts-Watch-App-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Myworkouts-Watch-App-Info.plist"; sourceTree = SOURCE_ROOT; };
+		FAAB14242A4616AD000AE2CD /* Myworkouts Watch App.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Myworkouts Watch App.entitlements"; sourceTree = "<group>"; };
+		FAAB14252A461A05000AE2CD /* ActivityRingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityRingsView.swift; sourceTree = "<group>"; };
 		FAF23B782A41FCC70015134B /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
 		FAF23B7A2A4207550015134B /* BindingExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BindingExtension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -140,6 +152,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FAAB14222A46164C000AE2CD /* HealthKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -167,6 +180,7 @@
 				FA44F62C2A35E4D0007A9E28 /* Myworkouts Watch AppTests */,
 				FA44F6362A35E4D0007A9E28 /* Myworkouts Watch AppUITests */,
 				FA44F6122A35E4CE007A9E28 /* Products */,
+				FAAB14202A46164C000AE2CD /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -184,6 +198,8 @@
 		FA44F61B2A35E4CE007A9E28 /* Myworkouts Watch App */ = {
 			isa = PBXGroup;
 			children = (
+				FAAB14242A4616AD000AE2CD /* Myworkouts Watch App.entitlements */,
+				FAAB14232A46168F000AE2CD /* Myworkouts-Watch-App-Info.plist */,
 				FAA407552A449A310090F54D /* Helpers */,
 				FA6511E22A38DEB7005630CE /* Match */,
 				FA44F6842A3617DB007A9E28 /* Training */,
@@ -196,6 +212,7 @@
 				FA44F61E2A35E4CE007A9E28 /* ContentView.swift */,
 				FA44F6202A35E4CF007A9E28 /* Assets.xcassets */,
 				FA44F6222A35E4CF007A9E28 /* Preview Content */,
+				FAAB141C2A460FF7000AE2CD /* ComplicationController.swift */,
 			);
 			path = "Myworkouts Watch App";
 			sourceTree = "<group>";
@@ -274,6 +291,7 @@
 		FA44F65A2A35F511007A9E28 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				FA7E3F652A47085500F38593 /* CustomView */,
 				FA44F65B2A35F511007A9E28 /* TextField */,
 			);
 			path = View;
@@ -307,6 +325,7 @@
 		FA44F6702A35F5E1007A9E28 /* Managers */ = {
 			isa = PBXGroup;
 			children = (
+				FAAB141A2A460D19000AE2CD /* WorkoutManager.swift */,
 				FA44F6712A35F5FA007A9E28 /* UserDataManager.swift */,
 			);
 			path = Managers;
@@ -418,12 +437,29 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		FA7E3F652A47085500F38593 /* CustomView */ = {
+			isa = PBXGroup;
+			children = (
+				FAAB14252A461A05000AE2CD /* ActivityRingsView.swift */,
+				FA7E3F632A47084700F38593 /* ElapsedTimeView.swift */,
+			);
+			path = CustomView;
+			sourceTree = "<group>";
+		};
 		FAA407552A449A310090F54D /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
 				FAA407562A449A480090F54D /* HelpersMethods.swift */,
 			);
 			path = Helpers;
+			sourceTree = "<group>";
+		};
+		FAAB14202A46164C000AE2CD /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				FAAB14212A46164C000AE2CD /* HealthKit.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -601,8 +637,10 @@
 				FA44F6672A35F512007A9E28 /* TextFieldView.swift in Sources */,
 				FA44F64F2A35E4FD007A9E28 /* ImageExtension.swift in Sources */,
 				FA44F6512A35E4FD007A9E28 /* StringExtension.swift in Sources */,
+				FAAB14262A461A05000AE2CD /* ActivityRingsView.swift in Sources */,
 				FAA407572A449A480090F54D /* HelpersMethods.swift in Sources */,
 				FA44F67C2A35FAD3007A9E28 /* ProfileViewModel.swift in Sources */,
+				FAAB141D2A460FF7000AE2CD /* ComplicationController.swift in Sources */,
 				FA44F67A2A35F7FB007A9E28 /* ProfileView.swift in Sources */,
 				FAF23B792A41FCC70015134B /* CustomButton.swift in Sources */,
 				FA6511EE2A38E543005630CE /* ItemLiveData.swift in Sources */,
@@ -610,9 +648,11 @@
 				FA6511F22A38E6ED005630CE /* SelectedView.swift in Sources */,
 				FA6511EC2A38E498005630CE /* MatchLiveDataView.swift in Sources */,
 				FAA407522A448E680090F54D /* Date+Extension.swift in Sources */,
+				FA7E3F642A47084700F38593 /* ElapsedTimeView.swift in Sources */,
 				FA44F6832A3616FB007A9E28 /* PlayerViewModel.swift in Sources */,
 				FA6511E82A38DEE5005630CE /* MatchViewModel.swift in Sources */,
 				FA44F6522A35E4FD007A9E28 /* DictionaryExtension.swift in Sources */,
+				FAAB141B2A460D19000AE2CD /* WorkoutManager.swift in Sources */,
 				FA44F61D2A35E4CE007A9E28 /* MyworkoutsApp.swift in Sources */,
 				FA44F6642A35F511007A9E28 /* User.swift in Sources */,
 				FA44F6502A35E4FD007A9E28 /* ColorExtension.swift in Sources */,
@@ -774,12 +814,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "Myworkouts Watch App/Myworkouts Watch App.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Myworkouts Watch App/Preview Content\"";
 				DEVELOPMENT_TEAM = 256PUM2HN6;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Myworkouts-Watch-App-Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = Myworkouts;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_WKWatchOnly = YES;
@@ -804,12 +846,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "Myworkouts Watch App/Myworkouts Watch App.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Myworkouts Watch App/Preview Content\"";
 				DEVELOPMENT_TEAM = 256PUM2HN6;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Myworkouts-Watch-App-Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = Myworkouts;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_WKWatchOnly = YES;

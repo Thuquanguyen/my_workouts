@@ -8,40 +8,40 @@
 import SwiftUI
 
 struct TrainingView: View {
-    @ObservedObject var countDownVM = CountDownViewModel()
-    @ObservedObject var viewModel = TrainingViewModel()
+    @EnvironmentObject var countDownVM: CountDownViewModel
+    @StateObject var viewModel = TrainingViewModel()
     @State private var selection: Tab = .duration
     @State private var isFirstScreen: Bool = true
-    @State var selectedIndex: Int = 0{
-        didSet{
-            print("self.dkadka = \(self.selectedIndex)")
-        }
-    }
+    @State private var isFirstWorkout: Bool = true
+    @EnvironmentObject var workoutManager: WorkoutManager
+    @State var selectedIndex: Int = 0
     
     
     var body: some View {
         VStack{
             TabView(selection: $selection) {
-                TrainingDurationView(viewModel: viewModel,countDownVM: countDownVM).tag(Tab.duration).onAppear{
-                    if(isFirstScreen){
-                        viewModel.selectedIndex = selectedIndex
-                        countDownVM.startTimerButt(mins: selectedIndex, secs: 0)
-                        isFirstScreen = false
-                    }
+                TrainingDurationView(viewModel: viewModel).environmentObject(countDownVM).environmentObject(workoutManager).tag(Tab.duration)
+                TrainingLiveDataView(viewModel: viewModel).environmentObject(workoutManager).tag(Tab.metrics)
+            }.onAppear{
+                if(isFirstScreen){
+                    print("selectedIndexselectedIndex = \(selectedIndex)")
+                    viewModel.selectedIndex = selectedIndex
+                    countDownVM.startTimerButt(mins: selectedIndex, secs: 0)
+                    isFirstScreen = false
                 }
-                TrainingLiveDataView().tag(Tab.metrics)
             }
         }
         .navigationTitle("Training")
         .navigationBarTitleDisplayMode(.inline)
         .navigationBarBackButtonHidden(true)
         .tabViewStyle(PageTabViewStyle(indexDisplayMode: .automatic))
+       
     }
 }
 
 struct TrainingView_Previews: PreviewProvider {
     static var previews: some View {
-        TrainingView()
+        TrainingView().environmentObject(WorkoutManager()).environmentObject(CountDownViewModel())
     }
 }
 
