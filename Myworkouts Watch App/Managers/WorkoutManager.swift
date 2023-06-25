@@ -106,7 +106,7 @@ class WorkoutManager: NSObject, ObservableObject {
 
     func endWorkout() {
         session?.end()
-        showingSummaryView = true
+//        showingSummaryView = true
     }
 
     // MARK: - Workout Metrics

@@ -14,6 +14,7 @@ struct ConfirmView: View{
     
     var body: some View {
         VStack{
+            Spacer()
             Text(title).multilineTextAlignment(.center).font(.system(size: 20))
             Spacer()
             HStack{

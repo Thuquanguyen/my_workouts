@@ -15,8 +15,6 @@ struct Myworkouts_Watch_AppApp: App {
         WindowGroup {
             NavigationView{
                 ContentView()
-            }.sheet(isPresented: $workoutManager.showingSummaryView) {
-                TrainingView()
             }
             .environmentObject(workoutManager)
             .environmentObject(counwDownVM)

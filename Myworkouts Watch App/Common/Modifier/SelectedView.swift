@@ -11,7 +11,7 @@ struct SelectedView: View{
     var title = ""
     var callBack: (Int) -> Void = { value in print(value) }
     
-    @State var selectedIndex = 0
+    @State var selectedIndex = 90
     var body: some View{
         VStack {
             Text(title)
@@ -30,8 +30,7 @@ struct SelectedView: View{
                 }
             }.padding(.zero)
                 .onChange(of: selectedIndex) { value in
-                    self.callBack(value)
-                                }
+                    self.callBack(value)}
         }
     }
 }

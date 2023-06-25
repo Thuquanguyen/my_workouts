@@ -73,12 +73,14 @@ final class CountDownViewModel: ObservableObject,Identifiable{
         }
     }
     
-    func stopTimerButton() {
+    func stopTimerButton(isSave: Bool = false) {
         timerActive = false
         timer.invalidate()
         timerLeft.invalidate()
         duration = 0
         durationLeft = 0
-        NotificationCenter.default.post(name: Notification.Name("endTime"), object: nil)
+        if(!isSave){
+            NotificationCenter.default.post(name: Notification.Name("endTime"), object: nil)
+        }
     }
 }

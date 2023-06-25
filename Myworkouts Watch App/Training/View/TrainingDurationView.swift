@@ -40,15 +40,13 @@ struct TrainingDurationView_Previews: PreviewProvider {
 extension TrainingDurationView{
     var StartView: some View{
         VStack {
+            Spacer()
             Text("Duration")
                 .font(.title3)
                 .fontWeight(.medium)
                 .foregroundColor(Color(hex: 0x818389))
-                .padding(.horizontal)
-            
-            Text("\(countDownVM.time)").font(.system(size: 60)).fontWeight(.medium)
-            Spacer()
-                    .frame(height: 10)
+                .padding(.zero)
+            Text("\(countDownVM.timeleft)").font(.system(size: 60)).fontWeight(.medium).padding(.vertical, -14)
             HStack {
                 VStack{
                     Text("Total time").foregroundColor(Color(hex: 0x494B4E)).font(.system(size: 12))
@@ -57,16 +55,17 @@ extension TrainingDurationView{
                 Spacer()
                 VStack{
                     Text("Time left").foregroundColor(Color(hex: 0x494B4E)).font(.system(size: 12))
-                    Text("(\(countDownVM.timeleft))").foregroundColor(Color(hex: 0xA2A2A2)).font(.system(size: 22))
+                    Text("(\(countDownVM.time))").foregroundColor(Color(hex: 0xA2A2A2)).font(.system(size: 22))
                 }.padding()
-            }
+            }.padding(.zero)
             if(viewModel.isSave){
                 Button(action: {
+                    countDownVM.stopTimerButton(isSave: true)
                     workoutManager.endWorkout()
                     self.presentationMode.wrappedValue.dismiss()
                 }, label: {
                     Text("Save").font(.headline).padding(.zero)
-                })
+                }).padding(.vertical, -5)
                     .background(Color(hex: 0x4654EA))
                     .cornerRadius(20)
             }else{

@@ -19,7 +19,7 @@ class TrainingViewModel: ObservableObject, Identifiable{
     @Published var isPause = false
     @Published var showConf = false
     @Published var isSave = false
-    @Published var selectedIndex = 0
+    @Published var selectedIndex = 90
     
     func saveData(){
         
